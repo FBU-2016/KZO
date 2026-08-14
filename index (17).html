@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KZÖ Operasyon Rehberi — Fenerbahçe Üniversitesi Uluslararası Ofis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e1015;
+    --surface:#181b22;
+    --ink:#f3f4f7;
+    --text:#c7cbd6;
+    --muted:#8a90a1;
+    --accent:#6f97ff;
+    --line:#2a2e38;
+    --line-strong:#e8eaf0;
+    --header-bg:#05060a;
+
+    --red:#ff6b5e;
+    --red-bg:rgba(255,107,94,.13);
+    --red-line:rgba(255,107,94,.38);
+    --amber:#ffb648;
+    --amber-bg:rgba(255,182,72,.13);
+    --amber-line:rgba(255,182,72,.38);
+    --green:#3ddc84;
+    --green-bg:rgba(61,220,132,.13);
+    --green-line:rgba(61,220,132,.38);
+    --blue:#6f97ff;
+    --blue-bg:rgba(111,151,255,.15);
+    --blue-line:rgba(111,151,255,.4);
+    --purple:#b58cff;
+    --purple-bg:rgba(181,140,255,.15);
+    --purple-line:rgba(181,140,255,.4);
+  }
+
+  html[data-theme="light"]{
+    --bg:#eef1f5;
+    --surface:#ffffff;
+    --ink:#12172a;
+    --text:#333a4d;
+    --muted:#767d91;
+    --accent:#2054c7;
+    --line:#dde1ea;
+    --line-strong:#12172a;
+    --header-bg:#12172a;
+
+    --red:#d1362a;
+    --red-bg:#fdeceb;
+    --red-line:#f2b8b2;
+    --amber:#c17a06;
+    --amber-bg:#fdf1de;
+    --amber-line:#f0cd8e;
+    --green:#0f8a52;
+    --green-bg:#e5f7ee;
+    --green-line:#a6e0c3;
+    --blue:#2054c7;
+    --blue-bg:#eaf0fe;
+    --blue-line:#b7cbf7;
+    --purple:#7c3aed;
+    --purple-bg:#f3ecfe;
+    --purple-line:#d3bcfa;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    font-size:18px;
+    line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+    transition:background-color .2s ease,color .2s ease;
+  }
+
+  .theme-toggle{
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    gap:2px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:100px;
+    padding:4px;
+    box-shadow:0 4px 16px rgba(0,0,0,.18);
+  }
+  .theme-toggle button{
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    border:none;
+    background:transparent;
+    color:var(--muted);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background-color .15s,color .15s;
+  }
+  .theme-toggle button.active{
+    background:var(--accent);
+    color:#fff;
+  }
+  @media (max-width:600px){
+    .theme-toggle{top:12px;right:12px;}
+    .theme-toggle button{width:32px;height:32px;font-size:14px;}
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk',sans-serif;
+    color:var(--ink);
+    margin:0;
+    font-weight:600;
+    letter-spacing:-.01em;
+  }
+  a{color:var(--accent);}
+
+  .label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  /* ---------- HEADER ---------- */
+  header.top{
+    background:var(--header-bg);
+    color:#fff;
+    padding:22px 24px 0;
+    border-bottom:5px solid var(--accent);
+    background-image:linear-gradient(90deg,var(--red),var(--amber),var(--green),var(--blue),var(--purple));
+    background-size:100% 5px;
+    background-repeat:no-repeat;
+    background-position:bottom;
+  }
+  header.top .inner{max-width:760px;margin:0 auto;padding-bottom:16px;}
+  header.top .label{color:#8fb0ff;margin-bottom:6px;font-size:11px;}
+  header.top h1{
+    color:#fff;
+    font-size:clamp(19px,2.4vw,25px);
+    line-height:1.3;
+    font-weight:600;
+  }
+  header.top p.sub{
+    margin-top:6px;
+    color:#b7bcc7;
+    font-size:13.5px;
+    max-width:60ch;
+  }
+  header.top .meta{
+    margin-top:10px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    color:#d7dbe3;
+  }
+  header.top .meta span{
+    padding:3px 9px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:4px;
+  }
+
+
+  /* ---------- LAYOUT ---------- */
+  .layout{
+    max-width:760px;
+    margin:0 auto;
+    padding:8px 24px 100px;
+  }
+
+  nav.toc{
+    padding:28px 0 8px;
+    margin-bottom:8px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    text-align:center;
+  }
+  nav.toc .label{color:var(--accent);}
+  nav.toc .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+  }
+  nav.toc button{
+    font-family:'Inter',sans-serif;
+    font-size:15px;
+    font-weight:600;
+    color:var(--accent);
+    text-decoration:none;
+    background:var(--blue-bg);
+    border:1px solid var(--blue-line);
+    padding:9px 18px;
+    border-radius:100px;
+    cursor:pointer;
+    transition:all .12s;
+  }
+  nav.toc button:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
+  nav.toc button.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+
+  nav.toc button.tab-blue{color:var(--blue);background:var(--blue-bg);border-color:var(--blue-line);}
+  nav.toc button.tab-blue:hover,nav.toc button.tab-blue.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+  nav.toc button.tab-amber{color:var(--amber);background:var(--amber-bg);border-color:var(--amber-line);}
+  nav.toc button.tab-amber:hover,nav.toc button.tab-amber.active{background:var(--amber);color:#fff;border-color:var(--amber);}
+  nav.toc button.tab-green{color:var(--green);background:var(--green-bg);border-color:var(--green-line);}
+  nav.toc button.tab-green:hover,nav.toc button.tab-green.active{background:var(--green);color:#fff;border-color:var(--green);}
+  nav.toc button.tab-purple{color:var(--purple);background:var(--purple-bg);border-color:var(--purple-line);}
+  nav.toc button.tab-purple:hover,nav.toc button.tab-purple.active{background:var(--purple);color:#fff;border-color:var(--purple);}
+
+  section.chapter.is-hidden{opacity:0;visibility:hidden;pointer-events:none;}
+  .chapters{
+    display:grid;
+  }
+  .chapters > section.chapter{
+    grid-column:1;
+    grid-row:1;
+    transition:opacity .18s ease;
+  }
+
+  section.chapter{margin-top:24px;}
+  .chapter-head{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:28px;
+    padding-bottom:18px;
+    border-bottom:3px solid var(--ink);
+  }
+  .chapter-head .chnum{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:22px;
+    font-weight:600;
+    color:#fff;
+    background:var(--accent);
+    width:50px;height:50px;
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .chapter-head h2{font-size:36px;letter-spacing:-.015em;}
+  section.chapter.tone-blue .chnum{background:var(--blue);}
+  section.chapter.tone-amber .chnum{background:var(--amber);}
+  section.chapter.tone-green .chnum{background:var(--green);}
+  section.chapter.tone-purple .chnum{background:var(--purple);}
+
+  .item{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:5px solid var(--line-strong);
+    border-radius:6px;
+    padding:18px 20px;
+    margin-bottom:14px;
+  }
+  .item.tone-red{background:var(--red-bg);border-color:var(--red-line);border-left-color:var(--red);}
+  .item.tone-amber{background:var(--amber-bg);border-color:var(--amber-line);border-left-color:var(--amber);}
+  .item.tone-green{background:var(--green-bg);border-color:var(--green-line);border-left-color:var(--green);}
+  .item.tone-blue{background:var(--blue-bg);border-color:var(--blue-line);border-left-color:var(--blue);}
+  .item.tone-purple{background:var(--purple-bg);border-color:var(--purple-line);border-left-color:var(--purple);}
+
+  .item-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:9px;
+  }
+  .item-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:18.5px;
+    color:var(--ink);
+  }
+  .item-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    font-weight:600;
+    white-space:nowrap;
+    flex-shrink:0;
+    padding:4px 10px;
+    border-radius:100px;
+    color:#fff;
+  }
+  .item.tone-red .item-tag{background:var(--red);}
+  .item.tone-amber .item-tag{background:var(--amber);}
+  .item.tone-green .item-tag{background:var(--green);}
+  .item.tone-blue .item-tag{background:var(--blue);}
+  .item.tone-purple .item-tag{background:var(--purple);}
+
+  .item p{margin:0 0 8px;font-size:16.5px;}
+  .item p:last-child{margin-bottom:0;}
+  .item ul{margin:8px 0 0;padding-left:19px;}
+  .item ul li{margin-bottom:6px;font-size:16.5px;}
+  .item strong{color:var(--ink);font-weight:600;}
+  u{text-decoration-color:var(--accent);text-underline-offset:2px;}
+
+  ol.checklist{
+    list-style:none;
+    counter-reset:cl;
+    margin:8px 0 0;padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+  }
+  ol.checklist li{
+    counter-increment:cl;
+    display:flex;
+    gap:11px;
+    font-size:16.5px;
+    align-items:baseline;
+  }
+  ol.checklist li::before{
+    content:counter(cl);
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;
+    font-size:11px;
+    color:#fff;
+    background:var(--blue);
+    width:19px;height:19px;
+    border-radius:5px;
+    display:inline-flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:14px;
+  }
+  .col-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:#fff;
+    background:var(--blue);
+    display:inline-block;
+    font-weight:600;
+    margin-bottom:12px;
+    padding:4px 10px;
+    border-radius:100px;
+  }
+  .two-col ul{margin:0;padding-left:18px;}
+  .two-col ul li{margin-bottom:6px;font-size:16px;}
+  .two-col > div{
+    background:var(--blue-bg);
+    border:1px solid var(--blue-line);
+    border-left:5px solid var(--blue);
+    border-radius:6px;
+    padding:18px 20px;
+  }
+
+  .banner{
+    background:var(--red);
+    border-radius:6px;
+    padding:16px 20px;
+    margin-bottom:14px;
+  }
+  .banner .label{color:#fbd4cf;margin-bottom:6px;display:block;}
+  .banner p{margin:0;font-size:17px;color:#fff;font-weight:500;line-height:1.55;}
+
+  footer{
+    max-width:760px;
+    margin:0 auto;
+    padding:30px 24px 60px;
+    display:flex;
+    justify-content:space-between;
+    color:var(--muted);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+  }
+
+  @media (max-width:600px){
+    header.top{padding:18px 20px 0;}
+    .layout{padding:8px 20px 80px;}
+    .two-col{grid-template-columns:1fr;}
+    nav.toc ol{gap:8px 18px;}
+  }
+
+  @media print{
+    body{background:#fff;color:#1a1a1a;}
+    header.top{background:#fff !important;color:#000;background-image:none;}
+    header.top .label,header.top p.sub,header.top .meta{color:#333 !important;}
+    .item{background:#fff !important;color:#000;}
+    .item-title,.chapter-head h2,h1{color:#000 !important;}
+    nav.toc{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="theme-toggle">
+  <button type="button" id="theme-dark" aria-label="Koyu mod">🌙</button>
+  <button type="button" id="theme-light" aria-label="Açık mod">☀️</button>
+</div>
+
+<header class="top">
+  <div class="inner">
+    <div class="label">Fenerbahçe Üniversitesi · Uluslararası Ofis</div>
+    <h1>Kısmi Zamanlı Öğrenciler (KZÖ) Operasyon Rehberi</h1>
+    <p class="sub">İkamet, dilekçe, kayıt-kabul ve genel ofis standartları için tek referans kaynağı.</p>
+    <div class="meta">
+      <span>Doküman Tarihi: Temmuz 2026</span>
+      <span>Uluslararası Ofis Operasyonel İşlem Standartları</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <nav class="toc">
+    <span class="label">Bölüm Seçin</span>
+    <div class="tabs">
+      <button type="button" class="tab-blue active" data-target="ikamet">1 · İkamet İşlemleri</button>
+      <button type="button" class="tab-amber" data-target="dilekce">2 · Dilekçe İşlemleri</button>
+      <button type="button" class="tab-green" data-target="kayit">3 · Kayıt ve Kabul</button>
+      <button type="button" class="tab-purple" data-target="genel">4 · Genel Kurallar &amp; KVKK</button>
+    </div>
+  </nav>
+
+  <div class="chapters">
+
+  <!-- 1. İKAMET -->
+  <section class="chapter tone-blue" id="ikamet">
+    <div class="chapter-head"><span class="chnum">01</span><h2>İkamet İşlemleri</h2></div>
+
+    <div class="item tone-red">
+      <div class="item-top">
+        <div class="item-title">İkamet Alan KZÖ İsim Kuralı</div>
+        <div class="item-tag">Sorumluluk Notu</div>
+      </div>
+      <p>İkamet evrakını teslim alan KZÖ, evrak dosyasının kenarına kurşun kalemle <strong>sadece kendi adını</strong> yazmalıdır.</p>
+    </div>
+
+    <div class="item tone-red">
+      <div class="item-top">
+        <div class="item-title">Beyan Kontrol Belgesi İmza Zorunluluğu</div>
+        <div class="item-tag">Kritik İmza Kuralı</div>
+      </div>
+      <p>Doğrudan Beyan Kontrol Belgesi'ne öğrencinin <strong>ıslak imzası</strong> attırılmalıdır. Beyan Kontrol Belgesi'ndeki imza alanı titizlikle kontrol edilmelidir.</p>
+    </div>
+
+    <div class="item tone-blue">
+      <div class="item-top">
+        <div class="item-title">İkamet Excel Kaydı ve Tebliğ-Tebellüğ Prosedürü</div>
+        <div class="item-tag">Excel Takip Kuralı</div>
+      </div>
+      <ul>
+        <li>Tebliğ tebellüğ belgesi verirken ikamet Excel dosyasından ilgili öğrencinin durumunu <strong>kesinlikle "Teslim Edildi"</strong> olarak işaretleyin.</li>
+        <li>Yapılan bütün ikamet işlemlerini (evrak teslimi, eksik belgeler, güncellemeler vb.) <strong>anında</strong> ikamet Excel listesine eklemeyi kesinlikle unutmayın. Eksiklerin takibi Excel üzerinden yapılacaktır.</li>
+      </ul>
+    </div>
+
+    <div class="item tone-blue">
+      <div class="item-top">
+        <div class="item-title">İkamet Dosyası İçin Gerekli 10 Belge ve Kontrol Şartları</div>
+        <div class="item-tag">Zorunlu Evraklar</div>
+      </div>
+      <ol class="checklist">
+        <li><span><strong>İkamet Beyan Kontrol Belgesi:</strong>&nbsp;Öğrenci tarafından <u>ıslak imzalı</u> olmalı.</span></li>
+        <li><span><strong>İkamet Başvuru Formu:</strong>&nbsp;Dosyada eksiksiz yer almalı.</span></li>
+        <li><span><strong>2 Adet Biyometrik Fotoğraf:</strong>&nbsp;Beyaz fon, güncel.</span></li>
+        <li><span><strong>Pasaport Fotokopisi:</strong>&nbsp;Aslı görülüp <u>"ASLI GÖRÜLDÜ"</u> damgası vurulmalı.</span></li>
+        <li><span><strong>Kimlik / Eski İkamet Fotokopisi:</strong>&nbsp;Varsa eklenmeli.</span></li>
+        <li><span><strong>Öğrenci Belgesi:</strong>&nbsp;Güncel ve barkodlu/e-imzalı.</span></li>
+        <li><span><strong>Adres Kaydı / Yerleşim Belgesi:</strong>&nbsp;e-Devlet veya Nüfus Md. onaylı.</span></li>
+        <li><span><strong>Sağlık Sigortası:</strong>&nbsp;Başvuru tarihlerini tam kapsamalı.</span></li>
+        <li><span><strong>Vergi Ödeme Makbuzu:</strong>&nbsp;Harç ve kart ödeme dekontu.</span></li>
+        <li><span><strong>UETS Bildirim Formu &amp; Parmak İzi (GÖÇNET):</strong>&nbsp;Eksiksiz kontrol edilmeli.</span></li>
+      </ol>
+    </div>
+
+    <div class="item tone-blue">
+      <div class="item-top">
+        <div class="item-title">Sağlık Sigortası İçin İletişim</div>
+        <div class="item-tag">İletişim Bilgisi</div>
+      </div>
+      <p>İkamet başvurusu için gereken sağlık sigortası <strong>Belen Sigorta</strong> üzerinden yaptırılabilir. İletişim: <strong>0542 413 34 61</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 2. DİLEKÇE -->
+  <section class="chapter tone-amber" id="dilekce">
+    <div class="chapter-head"><span class="chnum">02</span><h2>Dilekçe İşlemleri</h2></div>
+
+    <div class="item tone-amber">
+      <div class="item-top">
+        <div class="item-title">Dilekçe Alma ve İsim/Ek Yazma Kuralı</div>
+        <div class="item-tag">Zorunlu Prosedür</div>
+      </div>
+      <ul>
+        <li>Dilekçeyi teslim alan KZÖ, dilekçe kağıdının sağ/sol üst kenarına <strong>kendi adını</strong> yazmalıdır.</li>
+        <li>Dilekçe konusuna ilişkin tüm ek belgeler (transkript, sağlık raporu, pasaport fotokopisi vb.) eksiksiz şekilde dilekçenin arkasına <strong>zımbalanmalı/eklenmelidir</strong>. Ekleri olmayan dilekçeler işleme alınmaz.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. KAYIT VE KABUL -->
+  <section class="chapter tone-green" id="kayit">
+    <div class="chapter-head"><span class="chnum">03</span><h2>Kayıt ve Kabul İşlemleri</h2></div>
+
+    <div class="item tone-red">
+      <div class="item-top">
+        <div class="item-title">Ödeme, İade ve İptal Şartları</div>
+        <div class="item-tag">Mali Şartlar</div>
+      </div>
+      <ul>
+        <li><strong>Ön Ödeme (Depozito):</strong> Genel bölümler $1000 USD, Eczacılık $2000 USD. Ön ödemenin <u>iadesi yoktur</u>. Kesin kayıt yapmayan öğrencinin ödediği ücretten $1000 USD kesilip kalanı iade edilir.</li>
+        <li><strong>Kayıt İptali / Sildirme / Yatay Geçiş:</strong> Kesin kayıt sonrası hiçbir şekilde iade yapılmaz.</li>
+        <li><strong>Vize Reddi:</strong> Yalnızca resmi vize reddinde 250 USD kesilerek iade yapılır.</li>
+        <li><strong>Ödeme İndirimi:</strong> Maksimum 2 taksit veya peşin ödemede %10 indirim.</li>
+      </ul>
+    </div>
+
+    <div class="item tone-red">
+      <div class="item-top">
+        <div class="item-title">Tam Burslu Öğrenciler ve Burs Kapsamı</div>
+        <div class="item-tag">Burs Şartları</div>
+      </div>
+      <p>Tam burs, dil hazırlık okulunun yalnızca <strong>1. yılını</strong> kapsar. 2. yıla kalınması durumunda öğrenci o yılın ücretini <strong>normal (burssuz) öğrenci ücreti</strong> üzerinden öder.</p>
+    </div>
+
+    <div class="item tone-red">
+      <div class="item-top">
+        <div class="item-title">Dil Hazırlık Okulu Azami Süresi</div>
+        <div class="item-tag">Hazırlık Kuralı</div>
+      </div>
+      <ul>
+        <li><strong>Azami Süre:</strong> Dil hazırlık okulunun azami süresi <strong>2 yıldır</strong>.</li>
+        <li><strong>Süre Aşımı:</strong> 2 yıl içinde tamamlanamazsa öğrencinin kaydı <strong>iptal edilir</strong>. Öğrenci aynı dili aynı seviyede tekrar okuyamaz; ya farklı bir dile geçmeli ya da farklı bir dereceye (ör. yüksek lisanstan lisansa) yönelmelidir.</li>
+      </ul>
+    </div>
+
+    <div class="item tone-green">
+      <div class="item-top">
+        <div class="item-title">Kayıt Tarihleri ve Transfer Şartı</div>
+        <div class="item-tag">Kabul Şartları</div>
+      </div>
+      <ul>
+        <li><strong>Kayıt Tarihleri:</strong> 1 Temmuz – 30 Kasım arasındadır (başvuru, ödeme ve kayıt).</li>
+        <li><strong>Transfer:</strong> Yatay geçiş için Ders İçerikleri ve Transkript şarttır.</li>
+      </ul>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="col-label">Ön Lisans &amp; Lisans Kayıt Evrakları</div>
+        <ul>
+          <li>Lise Diplomasının <strong>Apostilli</strong> orijinali</li>
+          <li>Lise Transkriptinin orijinali</li>
+          <li>Diplomanın noter/konsolosluk tercümesi (TR/EN)</li>
+          <li>Transkriptin noter/konsolosluk tercümesi (TR/EN)</li>
+          <li>Kabul Mektubu (Offer Letter) kopyası</li>
+          <li>3 adet vesikalık fotoğraf</li>
+          <li>Pasaport aslı ve fotokopisi</li>
+          <li>Geçerli Vize veya Oturma İzni</li>
+        </ul>
+      </div>
+      <div>
+        <div class="col-label">Yüksek Lisans Kayıt Evrakları</div>
+        <ul>
+          <li>Lisans Diplomasının <strong>Apostilli</strong> orijinali</li>
+          <li>Lisans Transkriptinin orijinali</li>
+          <li>Diplomanın noter/konsolosluk tercümesi (TR/EN)</li>
+          <li>Transkriptin noter/konsolosluk tercümesi (TR/EN)</li>
+          <li>Kabul Mektubu (Offer Letter) kopyası</li>
+          <li>3 adet vesikalık fotoğraf</li>
+          <li>Pasaport aslı ve fotokopisi</li>
+          <li>Geçerli Vize veya Oturma İzni</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. GENEL OFİS -->
+  <section class="chapter tone-purple" id="genel">
+    <div class="chapter-head"><span class="chnum">04</span><h2>Genel Ofis Kuralları ve KVKK</h2></div>
+
+    <div class="banner">
+      <span class="label">Borç Durumu Kısıtlaması</span>
+      <p>Öğrencinin borcu varsa Öğrenci Belgesi verilemez, kayıt sildirilemez ve kayıt dondurulamaz.</p>
+    </div>
+
+    <div class="item tone-purple">
+      <div class="item-top">
+        <div class="item-title">Şahıslara Bilgi Paylaşım Yasağı (KVKK)</div>
+        <div class="item-tag">Yasal Sorumluluk</div>
+      </div>
+      <p>Öğrencinin arkadaşı, yakını veya ajansı aradığında/yazdığında KVKK gereği <strong>hiçbir bilgi verilemez</strong>. Bilgi sadece öğrencinin kendisine veya resmi vekiline aktarılır. Öğrenciler, resmi öğrenci e-posta adresleriyle kabul ofisimizin e-posta adresine yazarak da sorularını iletebilir; taleplerinize buradan da yanıt veriyoruz.</p>
+    </div>
+
+    <div class="item tone-blue">
+      <div class="item-top">
+        <div class="item-title">Şahsen Gelemeyen Öğrenciler / Vekalet</div>
+        <div class="item-tag">Vekalet ve YKN</div>
+      </div>
+      <p>Öğrenci yurt dışındaysa ders kaydı <strong>vekaletle</strong> yapılabilir. Ancak yasal vekili YKN talebi için okula gelmelidir. Önceden YKN varsa şahsen gelebilir. Öğrenciler ayrıca ders kaydını web sitemiz üzerinden <strong>online</strong> olarak da tamamlayabilir.</p>
+    </div>
+  </section>
+
+  </div>
+</div>
+
+<footer>
+  <span>Fenerbahçe Üniversitesi — Uluslararası Ofis / KZÖ Rehberi</span>
+  <span>v4 · Temmuz 2026</span>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('nav.toc button');
+  const chapters = document.querySelectorAll('section.chapter');
+
+  function showTarget(target){
+    chapters.forEach(ch => {
+      ch.classList.toggle('is-hidden', ch.id !== target);
+    });
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.target === target));
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.target;
+      showTarget(target);
+      try { history.replaceState(null, '', '#' + target); } catch (e) {}
+    });
+  });
+
+  // Respect a direct link to a section on load, e.g. index.html#kayit — otherwise default to the first section
+  const initial = location.hash.replace('#', '');
+  showTarget(initial && document.getElementById(initial) ? initial : 'ikamet');
+
+  // Theme toggle (dark / light), remembers choice when storage is available
+  const root = document.documentElement;
+  const darkBtn = document.getElementById('theme-dark');
+  const lightBtn = document.getElementById('theme-light');
+
+  function applyTheme(theme){
+    if (theme === 'light') {
+      root.setAttribute('data-theme', 'light');
+      lightBtn.classList.add('active');
+      darkBtn.classList.remove('active');
+    } else {
+      root.removeAttribute('data-theme');
+      darkBtn.classList.add('active');
+      lightBtn.classList.remove('active');
+    }
+    try { localStorage.setItem('kzo-theme', theme); } catch (e) {}
+  }
+
+  let savedTheme = 'dark';
+  try { savedTheme = localStorage.getItem('kzo-theme') || 'dark'; } catch (e) {}
+  applyTheme(savedTheme);
+
+  darkBtn.addEventListener('click', () => applyTheme('dark'));
+  lightBtn.addEventListener('click', () => applyTheme('light'));
+</script>
+
+</body>
+</html>
